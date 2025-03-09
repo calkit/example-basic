@@ -60,10 +60,10 @@ stages:
       nfiles: 2
     - path: paper/paper.tex
       hash: md5
-      md5: af281fec490bfff26b5954baa2e177d6
-      size: 577
+      md5: 6455fc859c8b1838f22d5ac74223b323
+      size: 604
     outs:
     - path: paper/paper.pdf
       hash: md5
-      md5: 272ef20d54a4c536be5a92693164a735
-      size: 92833
+      md5: 6f1fec0754597ecdb78cf0e9852884ad
+      size: 92860
