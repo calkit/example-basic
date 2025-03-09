@@ -5,7 +5,7 @@ description: A basic Calkit exmple project.
 git_repo_url: https://github.com/calkit/example-basic
 dependencies:
   - docker
-  - mamba
+  - conda
 questions:
   - Can we make reproducibility simple?
 datasets:
