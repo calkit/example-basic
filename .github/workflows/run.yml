@@ -15,10 +15,12 @@ jobs:
         run: |
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-      - uses: actions/setup-python@v5
+      - name: Setup Miniforge
+        uses: conda-incubator/setup-miniconda@v3
         with:
-          python-version: "3.13"
-      - run: pip install calkit-python uv
+          miniforge-version: latest
+          auto-activate-base: true
+      - run: pip install calkit-python
       - name: Restore DVC cache
         id: cache-dvc-restore
         uses: actions/cache/restore@v4
