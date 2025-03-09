@@ -20,6 +20,7 @@ jobs:
         with:
           miniforge-version: latest
           auto-activate-base: true
+          conda-remove-defaults: true
       - run: pip install calkit-python
       - name: Restore DVC cache
         id: cache-dvc-restore
