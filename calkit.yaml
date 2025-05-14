@@ -36,6 +36,8 @@ pipeline:
     kind: latex
     target_path: paper/paper.tex
     environment: tex
+    inputs:
+      - figures
     outputs:
       - paper/paper.pdf
 datasets:
