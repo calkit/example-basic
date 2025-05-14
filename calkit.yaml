@@ -8,6 +8,36 @@ dependencies:
   - conda
 questions:
   - Can we make reproducibility simple?
+environments:
+  py:
+    path: environment.yml
+    kind: conda
+    description: A Python environment
+  tex:
+    kind: docker
+    image: texlive/texlive:latest-full
+    description: TeX Live via Docker.
+pipeline:
+  collect-data:
+    kind: python-script
+    script_path: scripts/collect-data.py
+    environment: py
+    outputs:
+      - data/raw/data.csv
+  plot-voltage:
+    kind: python-script
+    script_path: scripts/plot-voltage.py
+    environment: py
+    inputs:
+      - data/raw/data.csv
+    outputs:
+      - figures/voltage-time-series.png
+  build-paper:
+    kind: latex
+    target_path: paper/paper.tex
+    environment: tex
+    outputs:
+      - paper/paper.pdf
 datasets:
   - path: data/raw/data.csv
     title: Raw data
@@ -23,13 +53,3 @@ publications:
     title: The paper
     description: This is the paper.
     stage: build-paper
-environments:
-  py:
-    path: environment.yml
-    kind: conda
-    description: A Python environment
-  tex:
-    kind: docker
-    image: texlive/texlive:latest-full
-    wdir: /work
-    description: TeX Live via Docker.
