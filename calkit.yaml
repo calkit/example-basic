@@ -1,7 +1,7 @@
 owner: calkit
 name: example-basic
 title: Basic Calkit example
-description: A basic Calkit exmple project.
+description: A basic Calkit example project.
 git_repo_url: https://github.com/calkit/example-basic
 dependencies:
   - docker
