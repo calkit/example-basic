@@ -1,25 +1,42 @@
 stages:
+  _check_env_py:
+    cmd: calkit check conda-env --file environment.yml --output .calkit/env-locks/py.yml
+    deps:
+      - environment.yml
+    outs:
+      - .calkit/env-locks/py.yml:
+          cache: false
+          persist: true
+    always_changed: true
+  _check_env_tex:
+    cmd: calkit check docker-env texlive/texlive:latest-full -o .calkit/env-locks/tex.json
+    deps: []
+    outs:
+      - .calkit/env-locks/tex.json:
+          cache: false
+          persist: true
+    always_changed: true
   collect-data:
-    cmd: calkit xenv -n py -- python scripts/collect-data.py
+    cmd: calkit xenv -n py --no-check -- python scripts/collect-data.py
     deps:
       - scripts/collect-data.py
-      - environment.yml
+      - .calkit/env-locks/py.yml
     outs:
       - data/raw/data.csv
   plot-voltage:
-    cmd: calkit xenv -n py -- python scripts/plot-voltage.py
+    cmd: calkit xenv -n py --no-check -- python scripts/plot-voltage.py
     deps:
       - scripts/plot-voltage.py
       - data/raw/data.csv
-      - environment.yml
+      - .calkit/env-locks/py.yml
     outs:
       - figures/voltage-time-series.png
   build-paper:
-    cmd: >
-      calkit xenv -n tex --
-      latexmk -cd -interaction=nonstopmode -pdf paper/paper.tex
+    cmd: calkit xenv -n tex --no-check -- latexmk -cd -interaction=nonstopmode
+      -pdf paper/paper.tex
     deps:
-      - figures
       - paper/paper.tex
+      - figures
+      - .calkit/env-locks/tex.json
     outs:
       - paper/paper.pdf
