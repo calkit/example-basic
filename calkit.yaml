@@ -30,7 +30,7 @@ pipeline:
       script_path: scripts/plot-voltage.py
       environment: py
       inputs:
-        - data/raw/data.csv
+        - from_stage_outputs: collect-data
       outputs:
         - figures/voltage-time-series.png
     build-paper:

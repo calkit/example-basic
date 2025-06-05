@@ -27,8 +27,8 @@ stages:
     cmd: calkit xenv -n py --no-check -- python scripts/plot-voltage.py
     deps:
       - scripts/plot-voltage.py
-      - data/raw/data.csv
       - .calkit/env-locks/py.yml
+      - data/raw/data.csv
     outs:
       - figures/voltage-time-series.png
   build-paper:
