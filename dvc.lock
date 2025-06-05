@@ -91,3 +91,22 @@ stages:
       hash: md5
       md5: b04cd12c7a8313853c8739a55f6320fe
       size: 2791
+  _check-env-py:
+    cmd: calkit check conda-env --file environment.yml --output .calkit/env-locks/py.yml
+    deps:
+    - path: environment.yml
+      hash: md5
+      md5: 4282ecbec6810eb293bdf62d7f956ffd
+      size: 119
+    outs:
+    - path: .calkit/env-locks/py.yml
+      hash: md5
+      md5: 8119fb42c7e8531010248790fff169cf
+      size: 2200
+  _check-env-tex:
+    cmd: calkit check docker-env texlive/texlive:latest-full -o .calkit/env-locks/tex.json
+    outs:
+    - path: .calkit/env-locks/tex.json
+      hash: md5
+      md5: b04cd12c7a8313853c8739a55f6320fe
+      size: 2791

@@ -1,5 +1,5 @@
 stages:
-  _check_env_py:
+  _check-env-py:
     cmd: calkit check conda-env --file environment.yml --output .calkit/env-locks/py.yml
     deps:
       - environment.yml
@@ -8,7 +8,7 @@ stages:
           cache: false
           persist: true
     always_changed: true
-  _check_env_tex:
+  _check-env-tex:
     cmd: calkit check docker-env texlive/texlive:latest-full -o .calkit/env-locks/tex.json
     deps: []
     outs:
