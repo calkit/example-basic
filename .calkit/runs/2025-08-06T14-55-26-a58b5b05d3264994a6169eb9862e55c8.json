@@ -1,0 +1,94 @@
+{
+  "id": "a58b5b05d3264994a6169eb9862e55c8",
+  "system_id": "1c56626645d3e5c942fa36a3951a971a6fdd4007",
+  "start_time": "2025-08-06T14:55:26.144605+00:00",
+  "end_time": "2025-08-06T14:57:40.842812+00:00",
+  "targets": [],
+  "force": false,
+  "dvc_args": [],
+  "status": "completed",
+  "stages": {
+    "_check-env-py": {
+      "start_time": "2025-08-06T14:55:26.319000",
+      "end_time": "2025-08-06T14:56:02.533000",
+      "status": "completed"
+    },
+    "_check-env-tex": {
+      "start_time": "2025-08-06T14:56:02.533000",
+      "end_time": "2025-08-06T14:57:33.240000",
+      "status": "completed"
+    },
+    "collect-data": {
+      "start_time": "2025-08-06T14:57:33.240000",
+      "end_time": "2025-08-06T14:57:35.525000",
+      "status": "completed"
+    },
+    "plot-voltage": {
+      "start_time": "2025-08-06T14:57:35.525000",
+      "end_time": "2025-08-06T14:57:38.597000",
+      "status": "completed"
+    },
+    "build-paper": {
+      "start_time": "2025-08-06T14:57:38.597000"
+    }
+  },
+  "git_rev": "dc9f1b2c957c7bafb8b92c9e370dc03389f470b2",
+  "git_branch": "main",
+  "git_changed_files_before": [],
+  "git_staged_files_before": [],
+  "git_untracked_files_before": [
+    ".calkit/systems/1c56626645d3e5c942fa36a3951a971a6fdd4007.json"
+  ],
+  "git_changed_files_after": [
+    ".calkit/env-locks/py.yml",
+    ".calkit/env-locks/tex.json"
+  ],
+  "git_staged_files_after": [
+    "dvc.lock"
+  ],
+  "git_untracked_files_after": [
+    ".calkit/systems/1c56626645d3e5c942fa36a3951a971a6fdd4007.json"
+  ],
+  "dvc_status_before": {
+    "_check-env-py": [
+      "always changed"
+    ],
+    "_check-env-tex": [
+      "always changed"
+    ]
+  },
+  "dvc_data_status_before": {
+    "not_in_cache": [],
+    "not_in_remote": [],
+    "committed": {},
+    "uncommitted": {},
+    "untracked": [],
+    "unchanged": [
+      "paper/paper.pdf",
+      "figures/voltage-time-series.png",
+      "data/raw/data.csv"
+    ]
+  },
+  "dvc_status_after": {
+    "_check-env-py": [
+      "always changed"
+    ],
+    "_check-env-tex": [
+      "always changed"
+    ]
+  },
+  "dvc_data_status_after": {
+    "not_in_cache": [],
+    "not_in_remote": [],
+    "committed": {
+      "modified": [
+        "figures/voltage-time-series.png",
+        "paper/paper.pdf",
+        "data/raw/data.csv"
+      ]
+    },
+    "uncommitted": {},
+    "untracked": [],
+    "unchanged": []
+  }
+}
