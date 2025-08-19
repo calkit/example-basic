@@ -1,9 +1,19 @@
 name: Run pipeline
 
-on: push
+on:
+  push:
+    branches:
+      - main
+  pull_request:
 
 permissions:
   contents: write
+
+# Make sure we only ever run one per branch so we don't have issues pushing
+# after running the pipeline
+concurrency:
+  group: calkit-run-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
   main:
@@ -11,6 +21,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          # For PRs, checkout the head ref to avoid detached HEAD
+          ref: ${{ github.head_ref || github.ref_name }}
+          token: ${{ secrets.GITHUB_TOKEN }}
       - name: Configure Git credentials
         run: |
           git config user.name github-actions[bot]
@@ -33,8 +47,9 @@ jobs:
       - run: calkit config remote-auth
         env:
           CALKIT_DVC_TOKEN: ${{ secrets.CALKIT_DVC_TOKEN }}
-      - run: dvc pull
+      - run: calkit dvc pull
       - run: calkit run
+      # If running on a PR, push to that branch, else push to main
       - run: calkit save -am "Run pipeline"
         env:
           CALKIT_DVC_TOKEN: ${{ secrets.CALKIT_DVC_TOKEN }}
