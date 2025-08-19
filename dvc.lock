@@ -65,13 +65,13 @@ stages:
       nfiles: 2
     - path: paper/paper.tex
       hash: md5
-      md5: 09f2923d7ec5a75fefe95497d6e177cd
-      size: 678
+      md5: 1480301e18c57bf533d604e1a3593101
+      size: 653
     outs:
     - path: paper/paper.pdf
       hash: md5
-      md5: bff1721a57af4275b13af9dd8033ad9a
-      size: 95417
+      md5: 13ee8eb76f777de6242c16c15d054673
+      size: 94915
   _check_env_py:
     cmd: calkit check conda-env --file environment.yml --output 
       .calkit/env-locks/py.yml
