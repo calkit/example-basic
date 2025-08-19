@@ -29,6 +29,8 @@ jobs:
         run: |
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
       - name: Setup Miniforge
         uses: conda-incubator/setup-miniconda@v3
         with:
