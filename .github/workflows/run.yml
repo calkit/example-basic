@@ -1,9 +1,19 @@
 name: Run pipeline
 
-on: push
+on:
+  push:
+    branches:
+      - main
+  pull_request:
 
 permissions:
   contents: write
+
+# Make sure we only ever run one per branch so we don't have issues pushing
+# after running the pipeline
+concurrency:
+  group: calkit-run-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
   main:
@@ -11,17 +21,26 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          # For PRs, checkout the head ref to avoid detached HEAD
+          ref: ${{ github.head_ref || github.ref_name }}
+          token: ${{ secrets.GITHUB_TOKEN }}
       - name: Configure Git credentials
         run: |
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      - name: Setup uv
+        uses: astral-sh/setup-uv@v5
       - name: Setup Miniforge
         uses: conda-incubator/setup-miniconda@v3
         with:
           miniforge-version: latest
           auto-activate-base: true
           conda-remove-defaults: true
-      - run: pip install calkit-python
+      - name: Install Calkit
+        run: uv tool install calkit-python
       - name: Restore DVC cache
         id: cache-dvc-restore
         uses: actions/cache/restore@v4
@@ -33,8 +52,9 @@ jobs:
       - run: calkit config remote-auth
         env:
           CALKIT_DVC_TOKEN: ${{ secrets.CALKIT_DVC_TOKEN }}
-      - run: dvc pull
+      - run: calkit dvc pull
       - run: calkit run
+      # If running on a PR, push to that branch, else push to main
       - run: calkit save -am "Run pipeline"
         env:
           CALKIT_DVC_TOKEN: ${{ secrets.CALKIT_DVC_TOKEN }}
