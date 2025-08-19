@@ -56,3 +56,5 @@ publications:
     title: The paper
     description: This is the paper.
     stage: build-paper
+showcase:
+  - publication: paper/paper.pdf
