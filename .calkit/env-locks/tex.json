@@ -2,9 +2,7 @@
     "RepoTags": [
         "texlive/texlive:latest-full"
     ],
-    "RepoDigests": [
-        "texlive/texlive@sha256:9080025bd1762766c229ed7543107aa7799a82fa65b0643c4191305677863859"
-    ],
+    "RepoDigests": [],
     "Architecture": "amd64",
     "Os": "linux",
     "Size": 5197757512,

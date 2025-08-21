@@ -56,8 +56,8 @@ stages:
     deps:
     - path: .calkit/env-locks/tex.json
       hash: md5
-      md5: c030e05b4e497d9d15b0cd07c1db16f3
-      size: 1171
+      md5: 534a02476c131f7ff8aade00da924521
+      size: 1068
     - path: figures
       hash: md5
       md5: dda637b5e3496cfe2e567067e3803a76.dir
@@ -70,7 +70,7 @@ stages:
     outs:
     - path: paper/paper.pdf
       hash: md5
-      md5: 416ce5fffb89503a2fb0c13d45d11128
+      md5: e5d87f1604108769c4d0f2906c602ac6
       size: 92533
   _check_env_py:
     cmd: calkit check conda-env --file environment.yml --output 
@@ -110,5 +110,5 @@ stages:
     outs:
     - path: .calkit/env-locks/tex.json
       hash: md5
-      md5: c030e05b4e497d9d15b0cd07c1db16f3
-      size: 1171
+      md5: 534a02476c131f7ff8aade00da924521
+      size: 1068
