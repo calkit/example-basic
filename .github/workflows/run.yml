@@ -47,7 +47,6 @@ jobs:
       - run: calkit dvc pull
         continue-on-error: true
       - run: calkit run
-      # If running on a PR, push to that branch, else push to main
       - run: calkit save -am "Run pipeline"
         env:
           CALKIT_DVC_TOKEN: ${{ secrets.CALKIT_DVC_TOKEN }}
