@@ -5,14 +5,16 @@ description: A basic Calkit example project.
 git_repo_url: https://github.com/calkit/example-basic
 dependencies:
   - docker
-  - conda
+  - uv
 questions:
   - Can we make reproducibility simple?
 environments:
   py:
-    path: environment.yml
-    kind: conda
-    description: A Python environment
+    path: requirements.txt
+    kind: uv-venv
+    python: "3.13"
+    prefix: .venv
+    description: A Python virtual environment managed with uv
   tex:
     kind: docker
     image: texlive/texlive:latest-full

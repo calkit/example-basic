@@ -2,9 +2,9 @@ stages:
   _check-env-py:
     cmd: calkit check environment --name py
     deps:
-      - environment.yml
+      - requirements.txt
     outs:
-      - .calkit/env-locks/py.yml:
+      - .calkit/env-locks/py.txt:
           cache: false
           persist: true
     always_changed: true
@@ -25,7 +25,7 @@ stages:
       scripts/collect-data.py
     deps:
       - scripts/collect-data.py
-      - .calkit/env-locks/py.yml
+      - .calkit/env-locks/py.txt
     outs:
       - data/raw/data.csv
     desc: Automatically generated from the 'collect-data' stage in 
@@ -35,7 +35,7 @@ stages:
       scripts/plot-voltage.py
     deps:
       - scripts/plot-voltage.py
-      - .calkit/env-locks/py.yml
+      - .calkit/env-locks/py.txt
       - data/raw/data.csv
     outs:
       - figures/voltage-time-series.png

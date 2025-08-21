@@ -1,8 +1,0 @@
-name: calkit-example-basic
-channels:
-  - conda-forge
-dependencies:
-  - python=3.12
-  - pandas
-  - matplotlib
-  - numpy
