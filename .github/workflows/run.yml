@@ -29,6 +29,19 @@ jobs:
         run: |
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+      - name: Cache Docker images
+        uses: actions/cache@v4
+        with:
+          path: /tmp/docker-cache
+          key: ${{ runner.os }}-docker-images
+          restore-keys: |
+            ${{ runner.os }}-docker-
+      - name: Load Docker cache
+        run: |
+          if [ -f /tmp/docker-cache/docker-cache.tar ]; then
+            echo "Loading Docker images from cache..."
+            docker load < /tmp/docker-cache/docker-cache.tar
+          fi
       - name: Setup uv
         uses: astral-sh/setup-uv@v5
       - name: Install Calkit
@@ -47,6 +60,16 @@ jobs:
       - run: calkit dvc pull
         continue-on-error: true
       - run: calkit run
+      - name: Save Docker cache
+        run: |
+          mkdir -p /tmp/docker-cache
+          # Save all non-base images
+          docker images --format "{{.Repository}}:{{.Tag}}" | grep -v "<none>" | grep -v "ubuntu\|alpine\|debian" > /tmp/docker-images.txt || true
+          if [ -s /tmp/docker-images.txt ]; then
+            echo "Saving Docker images to cache..."
+            docker save $(cat /tmp/docker-images.txt) > /tmp/docker-cache/docker-cache.tar
+          fi
+        if: always()
       # If running on a PR, push to that branch, else push to main
       - run: calkit save -am "Run pipeline"
         env:
