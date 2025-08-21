@@ -34,6 +34,6 @@ jobs:
       - name: Install Calkit
         run: uv tool install calkit-python
       - name: Run Calkit
-        uses: calkit/run-action@2ddab461e09ddd6b157ff68fa32d136272e91e71
+        uses: calkit/run-action@f1ee534e0bbcb43795739ef9a6e9e89f3bd50bd3
         with:
           dvc_token: ${{ secrets.CALKIT_DVC_TOKEN }}
