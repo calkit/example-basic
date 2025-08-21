@@ -33,26 +33,7 @@ jobs:
         uses: astral-sh/setup-uv@v5
       - name: Install Calkit
         run: uv tool install calkit-python
-      - name: Restore DVC cache
-        id: cache-dvc-restore
-        uses: actions/cache/restore@v4
+      - name: Run Calkit
+        uses: calkit/run-action@v1
         with:
-          path: .dvc/cache
-          key: ${{ runner.os }}-dvc-cache-${{ github.sha }}
-          restore-keys: |
-            ${{ runner.os }}-dvc-cache-
-      - run: calkit config remote-auth
-        env:
-          CALKIT_DVC_TOKEN: ${{ secrets.CALKIT_DVC_TOKEN }}
-      - run: calkit dvc pull
-        continue-on-error: true
-      - run: calkit run
-      - run: calkit save -am "Run pipeline"
-        env:
-          CALKIT_DVC_TOKEN: ${{ secrets.CALKIT_DVC_TOKEN }}
-      - name: Save DVC cache
-        id: cache-dvc-save
-        uses: actions/cache/save@v4
-        with:
-          path: .dvc/cache
-          key: ${{ runner.os }}-dvc-cache-${{ github.sha }}
+          dvc_token: ${{ secrets.CALKIT_DVC_TOKEN }}
