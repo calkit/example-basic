@@ -42,7 +42,7 @@ stages:
     desc: Automatically generated from the 'plot-voltage' stage in 
       calkit.yaml. Changes made here will be overwritten.
   build-paper:
-    cmd: calkit xenv -n tex --no-check -- latexmk -cd 
+    cmd: calkit xenv -n tex --no-check -- latexmk -cd -norc 
       -interaction=nonstopmode -silent -synctex=1 -pdf paper/paper.tex
     deps:
       - paper/paper.tex
