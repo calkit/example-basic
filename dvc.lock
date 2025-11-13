@@ -3,10 +3,11 @@ stages:
   collect-data:
     cmd: calkit xenv -n py --no-check -- python scripts/collect-data.py
     deps:
-    - path: .calkit/env-locks/venvs/linux-64/py.txt
+    - path: .calkit/env-locks/py
       hash: md5
-      md5: de96276868627f6d4aa908b2b4759a56
+      md5: 1ff10860cb1d183807b37f84dcd4ba42.dir
       size: 231
+      nfiles: 1
     - path: scripts/collect-data.py
       hash: md5
       md5: eeab1328ac4a9df2ef2452d32c1e6cce
@@ -14,18 +15,19 @@ stages:
     outs:
     - path: data/raw/data.csv
       hash: md5
-      md5: 3ec6df511ed8ebacdc436ce815ada1df
+      md5: ccdee5fffc91f03f33d59070524ada4a
       size: 43628
   plot-voltage:
     cmd: calkit xenv -n py --no-check -- python scripts/plot-voltage.py
     deps:
-    - path: .calkit/env-locks/venvs/linux-64/py.txt
+    - path: .calkit/env-locks/py
       hash: md5
-      md5: de96276868627f6d4aa908b2b4759a56
+      md5: 1ff10860cb1d183807b37f84dcd4ba42.dir
       size: 231
+      nfiles: 1
     - path: data/raw/data.csv
       hash: md5
-      md5: 3ec6df511ed8ebacdc436ce815ada1df
+      md5: ccdee5fffc91f03f33d59070524ada4a
       size: 43628
     - path: scripts/plot-voltage.py
       hash: md5
@@ -34,8 +36,8 @@ stages:
     outs:
     - path: figures/voltage-time-series.png
       hash: md5
-      md5: a70b61dc033585fe2d3c16d63290a870
-      size: 46210
+      md5: b5e321a2b3c3eaf0e7afbf60cfef81fc
+      size: 42048
   copy-figures-to-paper-dir:
     cmd: cp -r figures paper/figures
     deps:
@@ -54,14 +56,15 @@ stages:
     cmd: calkit xenv -n tex --no-check -- latexmk -cd -norc 
       -interaction=nonstopmode -silent -synctex=1 -pdf paper/paper.tex
     deps:
-    - path: .calkit/env-locks/docker/amd64/tex.json
+    - path: .calkit/env-locks/tex
       hash: md5
-      md5: af028316fd879fcf385e0838e3b7ad08
+      md5: 2c552307edd59397026c9ef06dc8af47.dir
       size: 1171
+      nfiles: 1
     - path: figures
       hash: md5
-      md5: 70126dc2f9f61fb93c62eb50b55f13f1.dir
-      size: 46235
+      md5: 3fc99ae0c5867a8f99d54cde2e14dd7f.dir
+      size: 42073
       nfiles: 2
     - path: paper/paper.tex
       hash: md5
@@ -70,8 +73,8 @@ stages:
     outs:
     - path: paper/paper.pdf
       hash: md5
-      md5: 7069d28ed4063d3bec319c661681648a
-      size: 98339
+      md5: 61d4b9b40b41503f616e0a3bfe0cbd89
+      size: 96237
   _check_env_py:
     cmd: calkit check conda-env --file environment.yml --output 
       .calkit/env-locks/py.yml
@@ -101,14 +104,16 @@ stages:
       md5: 2d0e401b7292d0d218bc567bfb37f9c7
       size: 24
     outs:
-    - path: .calkit/env-locks/venvs/linux-64/py.txt
+    - path: .calkit/env-locks/py
       hash: md5
-      md5: de96276868627f6d4aa908b2b4759a56
+      md5: 1ff10860cb1d183807b37f84dcd4ba42.dir
       size: 231
+      nfiles: 1
   _check-env-tex:
     cmd: calkit check environment --name tex
     outs:
-    - path: .calkit/env-locks/docker/amd64/tex.json
+    - path: .calkit/env-locks/tex
       hash: md5
-      md5: af028316fd879fcf385e0838e3b7ad08
+      md5: 2c552307edd59397026c9ef06dc8af47.dir
       size: 1171
+      nfiles: 1
