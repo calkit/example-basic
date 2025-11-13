@@ -4,7 +4,7 @@ stages:
     deps:
       - requirements.txt
     outs:
-      - .calkit/env-locks/venvs/linux-64/py.txt:
+      - .calkit/env-locks/py:
           cache: false
           persist: true
     always_changed: true
@@ -14,7 +14,7 @@ stages:
     cmd: calkit check environment --name tex
     deps: []
     outs:
-      - .calkit/env-locks/docker/amd64/tex.json:
+      - .calkit/env-locks/tex:
           cache: false
           persist: true
     always_changed: true
@@ -25,7 +25,7 @@ stages:
       scripts/collect-data.py
     deps:
       - scripts/collect-data.py
-      - .calkit/env-locks/venvs/linux-64/py.txt
+      - .calkit/env-locks/py
     outs:
       - data/raw/data.csv
     desc: Automatically generated from the 'collect-data' stage in 
@@ -35,7 +35,7 @@ stages:
       scripts/plot-voltage.py
     deps:
       - scripts/plot-voltage.py
-      - .calkit/env-locks/venvs/linux-64/py.txt
+      - .calkit/env-locks/py
       - data/raw/data.csv
     outs:
       - figures/voltage-time-series.png
@@ -47,7 +47,7 @@ stages:
     deps:
       - paper/paper.tex
       - figures
-      - .calkit/env-locks/docker/amd64/tex.json
+      - .calkit/env-locks/tex
     outs:
       - paper/paper.pdf
     desc: Automatically generated from the 'build-paper' stage in 
