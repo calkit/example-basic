@@ -33,6 +33,6 @@ jobs:
       - name: Setup uv
         uses: astral-sh/setup-uv@v5
       - name: Install Calkit
-        run: uv tool install calkit-python
+        run: uv tool install git+https://github.com/calkit/calkit.git@status
       - name: Run Calkit
         uses: calkit/run-action@v2
