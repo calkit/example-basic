@@ -53,8 +53,8 @@ stages:
       size: 45148
       nfiles: 2
   build-paper:
-    cmd: calkit xenv -n tex --no-check -- latexmk -cd -norc 
-      -interaction=nonstopmode -silent -synctex=1 -pdf paper/paper.tex
+    cmd: calkit xenv -n tex --no-check -- latexmk -cd -norc -interaction=nonstopmode
+      -silent -synctex=1 -pdf paper/paper.tex
     deps:
     - path: .calkit/env-locks/tex
       hash: md5
@@ -76,8 +76,7 @@ stages:
       md5: 24df231bcb8754c9bb3bf1087c31dd48
       size: 97240
   _check_env_py:
-    cmd: calkit check conda-env --file environment.yml --output 
-      .calkit/env-locks/py.yml
+    cmd: calkit check conda-env --file environment.yml --output .calkit/env-locks/py.yml
     deps:
     - path: environment.yml
       hash: md5
@@ -89,8 +88,7 @@ stages:
       md5: 8119fb42c7e8531010248790fff169cf
       size: 2200
   _check_env_tex:
-    cmd: calkit check docker-env texlive/texlive:latest-full -o 
-      .calkit/env-locks/tex.json
+    cmd: calkit check docker-env texlive/texlive:latest-full -o .calkit/env-locks/tex.json
     outs:
     - path: .calkit/env-locks/tex.json
       hash: md5
