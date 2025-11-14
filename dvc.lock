@@ -53,27 +53,26 @@ stages:
       size: 45148
       nfiles: 2
   build-paper:
-    cmd: calkit xenv -n tex --no-check -- latexmk -cd -norc 
-      -interaction=nonstopmode -silent -synctex=1 -pdf paper/paper.tex
+    cmd: calkit latexmk -e tex --no-check paper/paper.tex
     deps:
     - path: .calkit/env-locks/tex
       hash: md5
       md5: fdae1edb4dcd23e4265e4f7701b324a3.dir
       size: 2342
       nfiles: 2
-    - path: figures
+    - path: paper/figures
       hash: md5
-      md5: 96ef18d41535b1399d3739bfa0a6e1e7.dir
-      size: 44376
-      nfiles: 2
+      md5: f4508a38ea777d88ad4bc09a181b54e1.dir
+      size: 44351
+      nfiles: 1
     - path: paper/paper.tex
       hash: md5
-      md5: 09f2923d7ec5a75fefe95497d6e177cd
-      size: 678
+      md5: 91684f8a74080b3f6e31df9ae0618cc1
+      size: 675
     outs:
     - path: paper/paper.pdf
       hash: md5
-      md5: c8e91c13f1bd19d0a1a35c131ec9b68c
+      md5: bf270f418b8f0ff1997a886d32e68d0d
       size: 94469
   _check_env_py:
     cmd: calkit check conda-env --file environment.yml --output 
@@ -117,3 +116,17 @@ stages:
       md5: fdae1edb4dcd23e4265e4f7701b324a3.dir
       size: 2342
       nfiles: 2
+  map-paths:
+    cmd: calkit map-paths --dir-to-dir-merge 'figures->paper/figures'
+    deps:
+    - path: figures
+      hash: md5
+      md5: 96ef18d41535b1399d3739bfa0a6e1e7.dir
+      size: 44376
+      nfiles: 2
+    outs:
+    - path: paper/figures
+      hash: md5
+      md5: f4508a38ea777d88ad4bc09a181b54e1.dir
+      size: 44351
+      nfiles: 1

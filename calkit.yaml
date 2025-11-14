@@ -35,12 +35,18 @@ pipeline:
         - from_stage_outputs: collect-data
       outputs:
         - figures/voltage-time-series.png
+    map-paths:
+      kind: map-paths
+      paths:
+        - src: figures
+          dest: paper/figures
+          kind: dir-to-dir-merge
     build-paper:
       kind: latex
       target_path: paper/paper.tex
       environment: tex
       inputs:
-        - figures
+        - from_stage_outputs: map-paths
       outputs:
         - paper/paper.pdf
 datasets:
