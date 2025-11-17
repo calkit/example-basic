@@ -53,8 +53,7 @@ stages:
       size: 45148
       nfiles: 2
   build-paper:
-    cmd: calkit xenv -n tex --no-check -- latexmk -cd -norc 
-      -interaction=nonstopmode -silent -synctex=1 -pdf paper/paper.tex
+    cmd: calkit latex build -e tex --no-check paper/paper.tex
     deps:
     - path: .calkit/env-locks/tex
       hash: md5
@@ -73,8 +72,8 @@ stages:
     outs:
     - path: paper/paper.pdf
       hash: md5
-      md5: c8e91c13f1bd19d0a1a35c131ec9b68c
-      size: 94469
+      md5: 17ed665410daa2c5cf2eb9a9c0c9bbc6
+      size: 94435
   _check_env_py:
     cmd: calkit check conda-env --file environment.yml --output 
       .calkit/env-locks/py.yml
