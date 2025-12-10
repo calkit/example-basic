@@ -5,9 +5,9 @@ stages:
     deps:
     - path: .calkit/env-locks/py
       hash: md5
-      md5: 8a87260f7f7bdf4c073cfdc98bf5d538.dir
-      size: 462
-      nfiles: 2
+      md5: b195e8d274f75b5f4ba8642c2ce9f2ca.dir
+      size: 693
+      nfiles: 3
     - path: scripts/collect-data.py
       hash: md5
       md5: c001a466819572a44e286ff9738514b9
@@ -22,9 +22,9 @@ stages:
     deps:
     - path: .calkit/env-locks/py
       hash: md5
-      md5: 8a87260f7f7bdf4c073cfdc98bf5d538.dir
-      size: 462
-      nfiles: 2
+      md5: b195e8d274f75b5f4ba8642c2ce9f2ca.dir
+      size: 693
+      nfiles: 3
     - path: data/raw/data.csv
       hash: md5
       md5: 6a7da9292a60944dd1008dc348eafade
@@ -57,8 +57,8 @@ stages:
     deps:
     - path: .calkit/env-locks/tex
       hash: md5
-      md5: 52e872b5d525c49f4efc2f79b487c39e.dir
-      size: 2318
+      md5: 6e6fd137d3e11267da50d89f781b0552.dir
+      size: 2294
       nfiles: 2
     - path: figures
       hash: md5
@@ -72,7 +72,7 @@ stages:
     outs:
     - path: paper/paper.pdf
       hash: md5
-      md5: 252e5f50d648b3b69ca45b7ccb84be56
+      md5: 4531301fa2882cdc5dbe7ba35c615f2f
       size: 94121
   _check_env_py:
     cmd: calkit check conda-env --file environment.yml --output 
