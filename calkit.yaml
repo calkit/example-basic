@@ -3,11 +3,14 @@ name: example-basic
 title: Basic Calkit example
 description: A basic Calkit example project.
 git_repo_url: https://github.com/calkit/example-basic
+
 dependencies:
   - docker
   - uv
+
 questions:
   - Can we make reproducibility simple?
+
 environments:
   py:
     path: requirements.txt
@@ -19,6 +22,7 @@ environments:
     kind: docker
     image: texlive/texlive:latest-full
     description: TeX Live via Docker.
+
 pipeline:
   stages:
     collect-data:
@@ -43,20 +47,24 @@ pipeline:
         - figures
       outputs:
         - paper/paper.pdf
+
 datasets:
   - path: data/raw/data.csv
     title: Raw data
     description: This is raw voltage data.
     stage: collect-data
+
 figures:
   - path: figures/voltage-time-series.png
     title: Raw voltage time series
     description: A plot of the raw voltage time series.
     stage: plot-voltage
+
 publications:
   - path: paper/paper.pdf
     title: The paper
     description: This is the paper.
     stage: build-paper
+
 showcase:
   - publication: paper/paper.pdf
