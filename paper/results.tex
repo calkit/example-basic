@@ -1,0 +1,24 @@
+\makeatletter%
+\newcommand\results[1][all]{%
+  \ifnum\pdfstrcmp{#1}{all}=0%
+    \def\results@out{%
+    \{%
+      "mean": {-}0.057822632418548854, %
+      "std": 0.9940726228753299%
+    \}}%
+  \else%
+    \ifnum\pdfstrcmp{#1}{mean}=0%
+      \def\results@out{%
+    {-}0.057822632418548854}%
+    \else%
+      \ifnum\pdfstrcmp{#1}{std}=0%
+      \def\results@out{%
+    0.9940726228753299}%
+    \else%
+      \def\results@out{%
+    ??}%
+    \fi\fi
+  \fi
+  \results@out
+}%
+\makeatother%

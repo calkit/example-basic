@@ -31,27 +31,17 @@ stages:
       size: 43642
     - path: scripts/plot-voltage.py
       hash: md5
-      md5: 087a567a0c0f6199a908399013d564a1
-      size: 297
+      md5: 379c0e9377745fcd9d7506b8c30d67b8
+      size: 533
     outs:
-    - path: figures/voltage-time-series.png
+    - path: figures/x-vs-y.png
       hash: md5
-      md5: 7da581ec3035fdead447c4dff8963481
-      size: 44351
-  copy-figures-to-paper-dir:
-    cmd: cp -r figures paper/figures
-    deps:
-    - path: figures
+      md5: 44bc02d7e823417709ad42c88bc041c5
+      size: 41100
+    - path: results/summary.json
       hash: md5
-      md5: d6fd2418e3b774996ddd0f26715c36ac.dir
-      size: 45148
-      nfiles: 2
-    outs:
-    - path: paper/figures
-      hash: md5
-      md5: d6fd2418e3b774996ddd0f26715c36ac.dir
-      size: 45148
-      nfiles: 2
+      md5: ab14a5c39cf92d80e8e1255326f16846
+      size: 64
   build-paper:
     cmd: calkit latex build -e tex --no-check paper/paper.tex
     deps:
@@ -62,18 +52,22 @@ stages:
       nfiles: 2
     - path: figures
       hash: md5
-      md5: 96ef18d41535b1399d3739bfa0a6e1e7.dir
-      size: 44376
+      md5: 4fe252c7a6578495b7118e94272251ec.dir
+      size: 41112
       nfiles: 2
     - path: paper/paper.tex
       hash: md5
-      md5: 09f2923d7ec5a75fefe95497d6e177cd
-      size: 678
+      md5: 357e6824ca2bbc4cd133b50d9bc5dd85
+      size: 665
+    - path: paper/results.tex
+      hash: md5
+      md5: 874b1836db0451a9b25e2e51697c4ef5
+      size: 477
     outs:
     - path: paper/paper.pdf
       hash: md5
-      md5: 07142c56fdd1b107ecd2e6c50df37c59
-      size: 93898
+      md5: 315315518254cc2aae91c2fc354eb047
+      size: 93726
   _check_env_py:
     cmd: calkit check conda-env --file environment.yml --output 
       .calkit/env-locks/py.yml
@@ -116,3 +110,30 @@ stages:
       md5: fdae1edb4dcd23e4265e4f7701b324a3.dir
       size: 2342
       nfiles: 2
+  figs-to-paper:
+    cmd: calkit map-paths --dir-to-dir-replace 'figures->paper/figures'
+    deps:
+    - path: figures
+      hash: md5
+      md5: 4fe252c7a6578495b7118e94272251ec.dir
+      size: 41112
+      nfiles: 2
+    outs:
+    - path: paper/figures
+      hash: md5
+      md5: 4fe252c7a6578495b7118e94272251ec.dir
+      size: 41112
+      nfiles: 2
+  results-to-tex:
+    cmd: calkit latex from-json 'results/summary.json' --output 
+      'paper/results.tex'
+    deps:
+    - path: results/summary.json
+      hash: md5
+      md5: ab14a5c39cf92d80e8e1255326f16846
+      size: 64
+    outs:
+    - path: paper/results.tex
+      hash: md5
+      md5: 874b1836db0451a9b25e2e51697c4ef5
+      size: 477

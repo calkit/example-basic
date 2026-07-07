@@ -17,14 +17,38 @@ stages:
       - .calkit/env-locks/py
       - data/raw/data.csv
     outs:
-      - figures/voltage-time-series.png
+      - figures/x-vs-y.png
+      - results/summary.json
     desc: Automatically generated from the 'plot-voltage' stage in 
+      calkit.yaml. Changes made here will be overwritten.
+  figs-to-paper:
+    cmd: calkit map-paths --dir-to-dir-replace 
+      'figures->paper/figures'
+    deps:
+      - figures
+    outs:
+      - paper/figures:
+          cache: false
+          persist: true
+    desc: Automatically generated from the 'figs-to-paper' stage in 
+      calkit.yaml. Changes made here will be overwritten.
+  results-to-tex:
+    cmd: calkit latex from-json 'results/summary.json' --output 
+      'paper/results.tex'
+    deps:
+      - results/summary.json
+    outs:
+      - paper/results.tex:
+          cache: false
+          persist: false
+    desc: Automatically generated from the 'results-to-tex' stage in 
       calkit.yaml. Changes made here will be overwritten.
   build-paper:
     cmd: calkit latex build -e tex --no-check paper/paper.tex
     deps:
       - paper/paper.tex
       - figures
+      - paper/results.tex
       - .calkit/env-locks/tex
     outs:
       - paper/paper.pdf

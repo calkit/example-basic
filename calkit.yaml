@@ -50,14 +50,16 @@ pipeline:
         - results/summary.json
     figs-to-paper:
       kind: map-paths
-      inputs:
-        - figures
-      outputs:
-        - paper/figures
+      paths:
+        - kind: dir-to-dir-replace
+          src: figures
+          dest: paper/figures
     results-to-tex:
       kind: json-to-latex
-      input_path: results/summary.json
-      output_path: paper/results.tex
+      inputs:
+        - results/summary.json
+      outputs:
+        - paper/results.tex
     build-paper:
       kind: latex
       target_path: paper/paper.tex
