@@ -47,9 +47,9 @@ stages:
     cmd: calkit latex build -e tex --no-check paper/paper.tex
     deps:
       - paper/paper.tex
-      - figures
-      - paper/results.tex
       - .calkit/env-locks/tex
+      - paper/figures
+      - paper/results.tex
     outs:
       - paper/paper.pdf
     desc: Automatically generated from the 'build-paper' stage in 

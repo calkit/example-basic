@@ -65,8 +65,8 @@ pipeline:
       target_path: paper/paper.tex
       environment: tex
       inputs:
-        - figures
-        - paper/results.tex
+        - from_stage_outputs: figs-to-paper
+        - from_stage_outputs: results-to-tex
       outputs:
         - paper/paper.pdf
 
