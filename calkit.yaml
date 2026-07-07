@@ -9,7 +9,15 @@ dependencies:
   - uv
 
 questions:
-  - Can we make reproducibility simple?
+  - question: How does the system respond to increasing $x$?
+    hypothesis: The value of $y$ increases linearly with $x$.
+    answer: $y$ increases quadratically with $x$, not linearly.
+    evidence:
+      - kind: figure
+        path: figures/x-vs-y.png
+      - kind: result
+        path: results/summary.json
+        key: mean # r^2 for linear vs quadratic fit?
 
 environments:
   py:
@@ -38,13 +46,25 @@ pipeline:
       inputs:
         - from_stage_outputs: collect-data
       outputs:
-        - figures/voltage-time-series.png
+        - figures/x-vs-y.png
+        - results/summary.json
+    figs-to-paper:
+      kind: map-paths
+      inputs:
+        - figures
+      outputs:
+        - paper/figures
+    results-to-tex:
+      kind: json-to-latex
+      input_path: results/summary.json
+      output_path: paper/results.tex
     build-paper:
       kind: latex
       target_path: paper/paper.tex
       environment: tex
       inputs:
         - figures
+        - paper/results.tex
       outputs:
         - paper/paper.pdf
 
@@ -55,7 +75,7 @@ datasets:
     stage: collect-data
 
 figures:
-  - path: figures/voltage-time-series.png
+  - path: figures/x-vs-y.png
     title: Raw voltage time series
     description: A plot of the raw voltage time series.
     stage: plot-voltage
@@ -68,3 +88,8 @@ publications:
 
 showcase:
   - publication: paper/paper.pdf
+
+overleaf: {}
+
+# This section describes how to use this project as a template for new projects
+template: {}
