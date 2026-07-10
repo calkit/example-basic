@@ -3,17 +3,17 @@
   \ifnum\pdfstrcmp{#1}{all}=0%
     \def\results@out{%
     \{%
-      "mean": {-}0.057822632418548854, %
-      "std": 0.9940726228753299%
+      "r\_squared\_linear": 0.919, %
+      "r\_squared\_quadratic": 0.985%
     \}}%
   \else%
-    \ifnum\pdfstrcmp{#1}{mean}=0%
+    \ifnum\pdfstrcmp{#1}{r_squared_linear}=0%
       \def\results@out{%
-    {-}0.057822632418548854}%
+    0.919}%
     \else%
-      \ifnum\pdfstrcmp{#1}{std}=0%
+      \ifnum\pdfstrcmp{#1}{r_squared_quadratic}=0%
       \def\results@out{%
-    0.9940726228753299}%
+    0.985}%
     \else%
       \def\results@out{%
     ??}%

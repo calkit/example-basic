@@ -9,17 +9,18 @@ stages:
       - data/raw/data.csv
     desc: Automatically generated from the 'collect-data' stage in 
       calkit.yaml. Changes made here will be overwritten.
-  plot-voltage:
-    cmd: calkit xenv -n py --no-check -- python 
-      scripts/plot-voltage.py
+  analyze:
+    cmd: calkit xenv -n py --no-check -- python scripts/analyze.py
     deps:
-      - scripts/plot-voltage.py
+      - scripts/analyze.py
       - .calkit/env-locks/py
       - data/raw/data.csv
     outs:
       - figures/x-vs-y.png
-      - results/summary.json
-    desc: Automatically generated from the 'plot-voltage' stage in 
+      - results/summary.json:
+          cache: false
+          persist: false
+    desc: Automatically generated from the 'analyze' stage in 
       calkit.yaml. Changes made here will be overwritten.
   figs-to-paper:
     cmd: calkit map-paths --dir-to-dir-replace 

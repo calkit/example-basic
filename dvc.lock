@@ -10,13 +10,13 @@ stages:
       nfiles: 3
     - path: scripts/collect-data.py
       hash: md5
-      md5: c001a466819572a44e286ff9738514b9
-      size: 383
+      md5: f6eac9dcecbc83717c6487ad67fa2e48
+      size: 456
     outs:
     - path: data/raw/data.csv
       hash: md5
-      md5: 6a7da9292a60944dd1008dc348eafade
-      size: 43642
+      md5: 1599435208b7a99614b71c29fa93b519
+      size: 7312
   plot-voltage:
     cmd: calkit xenv -n py --no-check -- python scripts/plot-voltage.py
     deps:
@@ -52,22 +52,22 @@ stages:
       nfiles: 2
     - path: paper/figures
       hash: md5
-      md5: 4fe252c7a6578495b7118e94272251ec.dir
-      size: 41112
+      md5: 8e540e706ecbfbcda40107acea9facfd.dir
+      size: 63111
       nfiles: 2
     - path: paper/paper.tex
       hash: md5
-      md5: fa14b4c97676152f8aa8e8120b3b086e
-      size: 662
+      md5: 00d075d52fa2ce61924ba68a34585954
+      size: 1333
     - path: paper/results.tex
       hash: md5
-      md5: 874b1836db0451a9b25e2e51697c4ef5
-      size: 477
+      md5: 5e9c0516142b78357c001a65d19039a1
+      size: 475
     outs:
     - path: paper/paper.pdf
       hash: md5
-      md5: 3a17f449b756c8862f0edfb57bb87a3a
-      size: 93726
+      md5: 6ab0a95967e46ede0eebcd0c12e9c93d
+      size: 113300
   _check_env_py:
     cmd: calkit check conda-env --file environment.yml --output 
       .calkit/env-locks/py.yml
@@ -115,14 +115,14 @@ stages:
     deps:
     - path: figures
       hash: md5
-      md5: 4fe252c7a6578495b7118e94272251ec.dir
-      size: 41112
+      md5: 8e540e706ecbfbcda40107acea9facfd.dir
+      size: 63111
       nfiles: 2
     outs:
     - path: paper/figures
       hash: md5
-      md5: 4fe252c7a6578495b7118e94272251ec.dir
-      size: 41112
+      md5: 8e540e706ecbfbcda40107acea9facfd.dir
+      size: 63111
       nfiles: 2
   results-to-tex:
     cmd: calkit latex from-json 'results/summary.json' --output 
@@ -130,10 +130,35 @@ stages:
     deps:
     - path: results/summary.json
       hash: md5
-      md5: ab14a5c39cf92d80e8e1255326f16846
-      size: 64
+      md5: 746d889b64086f0edde9f0bb3b799338
+      size: 63
     outs:
     - path: paper/results.tex
       hash: md5
-      md5: 874b1836db0451a9b25e2e51697c4ef5
-      size: 477
+      md5: 5e9c0516142b78357c001a65d19039a1
+      size: 475
+  analyze:
+    cmd: calkit xenv -n py --no-check -- python scripts/analyze.py
+    deps:
+    - path: .calkit/env-locks/py
+      hash: md5
+      md5: b195e8d274f75b5f4ba8642c2ce9f2ca.dir
+      size: 693
+      nfiles: 3
+    - path: data/raw/data.csv
+      hash: md5
+      md5: 1599435208b7a99614b71c29fa93b519
+      size: 7312
+    - path: scripts/analyze.py
+      hash: md5
+      md5: dc43cbe2ee422b62a67d7e6ddc80d55c
+      size: 2006
+    outs:
+    - path: figures/x-vs-y.png
+      hash: md5
+      md5: 79efaca5478ffc7c19b0db3a0ae5fcb5
+      size: 63099
+    - path: results/summary.json
+      hash: md5
+      md5: 746d889b64086f0edde9f0bb3b799338
+      size: 63

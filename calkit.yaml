@@ -17,7 +17,7 @@ questions:
         path: figures/x-vs-y.png
       - kind: result
         path: results/summary.json
-        key: mean # r^2 for linear vs quadratic fit?
+        key: r_squared_quadratic
 
 environments:
   py:
@@ -39,15 +39,16 @@ pipeline:
       environment: py
       outputs:
         - data/raw/data.csv
-    plot-voltage:
+    analyze:
       kind: python-script
-      script_path: scripts/plot-voltage.py
+      script_path: scripts/analyze.py
       environment: py
       inputs:
         - from_stage_outputs: collect-data
       outputs:
         - figures/x-vs-y.png
-        - results/summary.json
+        - path: results/summary.json
+          storage: git
     figs-to-paper:
       kind: map-paths
       paths:
@@ -73,14 +74,16 @@ pipeline:
 datasets:
   - path: data/raw/data.csv
     title: Raw data
-    description: This is raw voltage data.
+    description: This is raw $x$ and $y$ data.
     stage: collect-data
 
 figures:
   - path: figures/x-vs-y.png
-    title: Raw voltage time series
-    description: A plot of the raw voltage time series.
-    stage: plot-voltage
+    title: Analysis of $x$ vs $y$
+    description: >-
+      A plot of the measured $x$ vs $y$ data with linear and quadratic
+      fits, showing the quadratic fit is much better.
+    stage: analyze
 
 publications:
   - path: paper/paper.pdf

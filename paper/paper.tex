@@ -3,6 +3,9 @@
 \usepackage{sectsty}
 \usepackage{graphicx}
 
+% Results generated from results/summary.json by the pipeline
+\input{results.tex}
+
 % Margins
 \topmargin=-0.45in
 \evensidemargin=0in
@@ -27,10 +30,27 @@
 
 \section{Section 1}
 
-In the figure below,
-we can see a voltage time series from the sensor.
+In Figure~\ref{fig:x-vs-y},
+we can see the measured relationship between $x$ and $y$,
+along with linear and quadratic fits.
+The quadratic fit has a much higher $R^2$
+(\results[r_squared_quadratic])
+than the linear fit
+(\results[r_squared_linear]),
+indicating that $y$ increases quadratically with $x$.
 
-\includegraphics{figures/x-vs-y.png}
+\begin{figure}[h]
+  \centering
+  \includegraphics{figures/x-vs-y.png}
+  \caption{
+    Measured $x$ vs $y$ data with linear and quadratic fits.
+    The quadratic fit ($R^2 = \results[r_squared_quadratic]$)
+    captures the data much better than the linear fit
+    ($R^2 = \results[r_squared_linear]$),
+    showing that $y$ increases quadratically with $x$.
+  }
+  \label{fig:x-vs-y}
+\end{figure}
 
 
 \pagebreak
