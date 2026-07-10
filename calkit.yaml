@@ -9,7 +9,15 @@ dependencies:
   - uv
 
 questions:
-  - Can we make reproducibility simple?
+  - question: How does the system respond to increasing $x$?
+    hypothesis: The value of $y$ increases linearly with $x$.
+    answer: $y$ increases quadratically with $x$, not linearly.
+    evidence:
+      - kind: figure
+        path: figures/x-vs-y.png
+      - kind: result
+        path: results/summary.json
+        key: r_squared_quadratic
 
 environments:
   py:
@@ -31,34 +39,55 @@ pipeline:
       environment: py
       outputs:
         - data/raw/data.csv
-    plot-voltage:
+    analyze:
       kind: python-script
-      script_path: scripts/plot-voltage.py
+      script_path: scripts/analyze.py
       environment: py
       inputs:
         - from_stage_outputs: collect-data
       outputs:
-        - figures/voltage-time-series.png
+        - figures/x-vs-y.png
+        - path: results/summary.json
+          storage: git
+    figs-to-paper:
+      kind: map-paths
+      paths:
+        - kind: dir-to-dir-replace
+          src: figures
+          dest: paper/figures
+    results-to-tex:
+      kind: json-to-latex
+      inputs:
+        - results/summary.json
+      outputs:
+        - paper/results.tex
     build-paper:
       kind: latex
       target_path: paper/paper.tex
       environment: tex
       inputs:
-        - figures
+        - from_stage_outputs: figs-to-paper
+        - from_stage_outputs: results-to-tex
+        - paper/references.bib
       outputs:
         - paper/paper.pdf
 
 datasets:
   - path: data/raw/data.csv
     title: Raw data
-    description: This is raw voltage data.
+    description: This is raw $x$ and $y$ data.
     stage: collect-data
 
 figures:
-  - path: figures/voltage-time-series.png
-    title: Raw voltage time series
-    description: A plot of the raw voltage time series.
-    stage: plot-voltage
+  - path: figures/x-vs-y.png
+    title: Analysis of $x$ vs $y$
+    description: >-
+      A plot of the measured $x$ vs $y$ data with linear and quadratic
+      fits, showing the quadratic fit is much better.
+    stage: analyze
+
+references:
+  - path: paper/references.bib
 
 publications:
   - path: paper/paper.pdf

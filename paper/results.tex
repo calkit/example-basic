@@ -1,0 +1,24 @@
+\makeatletter%
+\newcommand\results[1][all]{%
+  \ifnum\pdfstrcmp{#1}{all}=0%
+    \def\results@out{%
+    \{%
+      "r\_squared\_linear": 0.919, %
+      "r\_squared\_quadratic": 0.985%
+    \}}%
+  \else%
+    \ifnum\pdfstrcmp{#1}{r_squared_linear}=0%
+      \def\results@out{%
+    0.919}%
+    \else%
+      \ifnum\pdfstrcmp{#1}{r_squared_quadratic}=0%
+      \def\results@out{%
+    0.985}%
+    \else%
+      \def\results@out{%
+    ??}%
+    \fi\fi
+  \fi
+  \results@out
+}%
+\makeatother%
