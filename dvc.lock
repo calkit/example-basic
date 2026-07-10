@@ -57,8 +57,12 @@ stages:
       nfiles: 2
     - path: paper/paper.tex
       hash: md5
-      md5: 00d075d52fa2ce61924ba68a34585954
-      size: 1333
+      md5: 71f085c6173d528fc1a037d4cea99da9
+      size: 1447
+    - path: paper/references.bib
+      hash: md5
+      md5: 3a8eb190ac22eb105de57b1f587d6a83
+      size: 200
     - path: paper/results.tex
       hash: md5
       md5: 5e9c0516142b78357c001a65d19039a1
@@ -66,8 +70,8 @@ stages:
     outs:
     - path: paper/paper.pdf
       hash: md5
-      md5: 6ab0a95967e46ede0eebcd0c12e9c93d
-      size: 113300
+      md5: bcd6809369b757720e02018f15dd250d
+      size: 128299
   _check_env_py:
     cmd: calkit check conda-env --file environment.yml --output 
       .calkit/env-locks/py.yml

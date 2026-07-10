@@ -48,6 +48,7 @@ stages:
     cmd: calkit latex build -e tex --no-check paper/paper.tex
     deps:
       - paper/paper.tex
+      - paper/references.bib
       - .calkit/env-locks/tex
       - paper/figures
       - paper/results.tex

@@ -68,6 +68,7 @@ pipeline:
       inputs:
         - from_stage_outputs: figs-to-paper
         - from_stage_outputs: results-to-tex
+        - paper/references.bib
       outputs:
         - paper/paper.pdf
 
@@ -84,6 +85,9 @@ figures:
       A plot of the measured $x$ vs $y$ data with linear and quadratic
       fits, showing the quadratic fit is much better.
     stage: analyze
+
+references:
+  - path: paper/references.bib
 
 publications:
   - path: paper/paper.pdf
