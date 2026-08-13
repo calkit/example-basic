@@ -31,9 +31,5 @@ jobs:
         run: |
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-      - name: Setup uv
-        uses: astral-sh/setup-uv@v5
-      - name: Install Calkit
-        run: uv tool install calkit-python
       - name: Run Calkit
-        uses: calkit/run-action@v2
+        uses: calkit/calkit/actions/run@main
