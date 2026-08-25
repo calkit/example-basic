@@ -1,13 +1,13 @@
 stages:
   collect-data:
-    cmd: calkit xenv -n py --no-check -- python 
+    cmd: calkit xenv -n py --no-check -- python
       scripts/collect-data.py
     deps:
       - scripts/collect-data.py
       - .calkit/env-locks/py
     outs:
       - data/raw/data.csv
-    desc: Automatically generated from the 'collect-data' stage in 
+    desc: Automatically generated from the 'collect-data' stage in
       calkit.yaml. Changes made here will be overwritten.
   analyze:
     cmd: calkit xenv -n py --no-check -- python scripts/analyze.py
@@ -20,10 +20,10 @@ stages:
       - results/summary.json:
           cache: false
           persist: false
-    desc: Automatically generated from the 'analyze' stage in 
+    desc: Automatically generated from the 'analyze' stage in
       calkit.yaml. Changes made here will be overwritten.
   figs-to-paper:
-    cmd: calkit map-paths --dir-to-dir-replace 
+    cmd: calkit map-paths --dir-to-dir-replace
       'figures->paper/figures'
     deps:
       - figures
@@ -31,10 +31,10 @@ stages:
       - paper/figures:
           cache: false
           persist: true
-    desc: Automatically generated from the 'figs-to-paper' stage in 
+    desc: Automatically generated from the 'figs-to-paper' stage in
       calkit.yaml. Changes made here will be overwritten.
   results-to-tex:
-    cmd: calkit latex from-json 'results/summary.json' --output 
+    cmd: calkit latex from-json 'results/summary.json' --output
       'paper/results.tex'
     deps:
       - results/summary.json
@@ -42,17 +42,17 @@ stages:
       - paper/results.tex:
           cache: false
           persist: false
-    desc: Automatically generated from the 'results-to-tex' stage in 
+    desc: Automatically generated from the 'results-to-tex' stage in
       calkit.yaml. Changes made here will be overwritten.
   build-paper:
-    cmd: calkit latex build -e tex --no-check paper/paper.tex
+    cmd: calkit latex build -e tex --no-check paper/main.tex
     deps:
-      - paper/paper.tex
+      - paper/main.tex
       - paper/references.bib
       - .calkit/env-locks/tex
       - paper/figures
       - paper/results.tex
     outs:
-      - paper/paper.pdf
-    desc: Automatically generated from the 'build-paper' stage in 
+      - paper/main.pdf
+    desc: Automatically generated from the 'build-paper' stage in
       calkit.yaml. Changes made here will be overwritten.

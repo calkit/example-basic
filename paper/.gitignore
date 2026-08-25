@@ -3,7 +3,6 @@ figures
 *.dvi
 *.fdb_latexmk
 *.fls
-/paper.pdf
 
 # >>> calkit latex aux files (managed by calkit) >>>
 *.aux
@@ -22,3 +21,4 @@ figures
 *.toc
 *.vrb
 # <<< calkit latex aux files <<<
+/main.pdf

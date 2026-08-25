@@ -4,7 +4,7 @@ title: Basic Calkit example
 description: A basic Calkit example project.
 git_repo_url: https://github.com/calkit/example-basic
 
-dependencies:
+requirements:
   - docker
   - uv
 
@@ -63,14 +63,12 @@ pipeline:
         - paper/results.tex
     build-paper:
       kind: latex
-      target_path: paper/paper.tex
+      target_path: paper/main.tex
       environment: tex
       inputs:
         - from_stage_outputs: figs-to-paper
         - from_stage_outputs: results-to-tex
         - paper/references.bib
-      outputs:
-        - paper/paper.pdf
 
 datasets:
   - path: data/raw/data.csv
@@ -90,10 +88,10 @@ references:
   - path: paper/references.bib
 
 publications:
-  - path: paper/paper.pdf
+  - path: paper/main.pdf
     title: The paper
     description: This is the paper.
     stage: build-paper
 
 showcase:
-  - publication: paper/paper.pdf
+  - publication: paper/main.pdf

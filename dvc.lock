@@ -43,7 +43,7 @@ stages:
       md5: ab14a5c39cf92d80e8e1255326f16846
       size: 64
   build-paper:
-    cmd: calkit latex build -e tex --no-check paper/paper.tex
+    cmd: calkit latex build -e tex --no-check paper/main.tex
     deps:
     - path: .calkit/env-locks/tex
       hash: md5
@@ -55,7 +55,7 @@ stages:
       md5: 8e540e706ecbfbcda40107acea9facfd.dir
       size: 63111
       nfiles: 2
-    - path: paper/paper.tex
+    - path: paper/main.tex
       hash: md5
       md5: 71f085c6173d528fc1a037d4cea99da9
       size: 1447
@@ -68,10 +68,10 @@ stages:
       md5: 5e9c0516142b78357c001a65d19039a1
       size: 475
     outs:
-    - path: paper/paper.pdf
+    - path: paper/main.pdf
       hash: md5
-      md5: bcd6809369b757720e02018f15dd250d
-      size: 128299
+      md5: 2e77fb4ddd25bdde3831f7ab10d1f48c
+      size: 128373
   _check_env_py:
     cmd: calkit check conda-env --file environment.yml --output 
       .calkit/env-locks/py.yml
