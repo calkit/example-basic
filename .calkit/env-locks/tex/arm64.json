@@ -1,0 +1,23 @@
+{
+    "RepoDigests": [
+        "sha256:fc4a4a892bc9b081b878b06c75f8c580e8d0faf38298e00c94bdb2acd2936820"
+    ],
+    "Architecture": "arm64",
+    "Os": "linux",
+    "RootFS": {
+        "Type": "layers",
+        "Layers": [
+            "sha256:8edaba05454265cd17270d38ec146446c640d1d25637413c3da64a3eff296c36",
+            "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+            "sha256:10863c806987d3fa3acfafcf20fbb8f2a88d95e792d0cc5cfed0ca2bd87a7ca7",
+            "sha256:962ba90483605e8aee6d9fefba4dbf39e6b3182cc8a07e9373fa14595b9f7598",
+            "sha256:e451d3bf1d1c35596950d50a33da159d3c9062a14d377b19f842be7b7f716443",
+            "sha256:059fced89a6b7b9d58f4227128eb3f831257af5b5fb67da31fb394795dba75e5",
+            "sha256:b4fd48c32067ab55a7db8fe466be321db605698fffa86c474052d210f93279ad",
+            "sha256:d731c9502f215dd9ad4f22d514137a6dbee613528e9aec62699fa3c3f5fef39e",
+            "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef"
+        ]
+    },
+    "DockerfileMD5": null,
+    "DepsMD5s": {}
+}
