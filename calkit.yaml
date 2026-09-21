@@ -28,7 +28,7 @@ environments:
     description: A Python virtual environment managed with uv
   tex:
     kind: docker
-    image: ghcr.io/calkit/latex:0.1.0
+    image: ghcr.io/calkit/latex:0.1.1
     description: TeX Live via Docker.
 
 pipeline:
