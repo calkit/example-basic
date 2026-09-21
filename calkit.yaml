@@ -11,13 +11,15 @@ requirements:
 questions:
   - question: How does the system respond to increasing $x$?
     hypothesis: The value of $y$ increases linearly with $x$.
-    answer: $y$ increases quadratically with $x$, not linearly.
+    answer: $y$ increases quadratically with $x$, not linearly
+      ($R^2 = {r2:.3f}$ for the quadratic fit).
     evidence:
       - kind: figure
         path: figures/x-vs-y.png
-      - kind: result
+      - kind: value
         path: results/summary.json
         key: r_squared_quadratic
+        name: r2
 
 environments:
   py:
