@@ -70,7 +70,7 @@ stages:
     outs:
     - path: paper/main.pdf
       hash: md5
-      md5: c5663f5c1a529163ac338c817059f020
+      md5: e2ea967fb6039eacef868ed1c3178d53
       size: 128835
   _check_env_py:
     cmd: calkit check conda-env --file environment.yml --output 
