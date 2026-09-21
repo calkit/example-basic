@@ -1,14 +1,13 @@
 stages:
   collect-data:
-    cmd: calkit xenv -n py --no-check -- python
-      scripts/collect-data.py
+    cmd: calkit xenv -n py --no-check -- python scripts/collect-data.py
     deps:
       - scripts/collect-data.py
       - .calkit/env-locks/py
     outs:
       - data/raw/data.csv
-    desc: Automatically generated from the 'collect-data' stage in
-      calkit.yaml. Changes made here will be overwritten.
+    desc: Automatically generated from the 'collect-data' stage in calkit.yaml.
+      Changes made here will be overwritten.
   analyze:
     cmd: calkit xenv -n py --no-check -- python scripts/analyze.py
     deps:
@@ -20,19 +19,18 @@ stages:
       - results/summary.json:
           cache: false
           persist: false
-    desc: Automatically generated from the 'analyze' stage in
-      calkit.yaml. Changes made here will be overwritten.
+    desc: Automatically generated from the 'analyze' stage in calkit.yaml.
+      Changes made here will be overwritten.
   figs-to-paper:
-    cmd: calkit map-paths --dir-to-dir-replace
-      'figures->paper/figures'
+    cmd: calkit map-paths --dir-to-dir-replace "figures->paper/figures"
     deps:
       - figures
     outs:
       - paper/figures:
           cache: false
           persist: true
-    desc: Automatically generated from the 'figs-to-paper' stage in
-      calkit.yaml. Changes made here will be overwritten.
+    desc: Automatically generated from the 'figs-to-paper' stage in calkit.yaml.
+      Changes made here will be overwritten.
   results-to-tex:
     cmd: calkit latex from-json 'results/summary.json' --output
       'paper/results.tex'
@@ -54,5 +52,5 @@ stages:
       - paper/results.tex
     outs:
       - paper/main.pdf
-    desc: Automatically generated from the 'build-paper' stage in
-      calkit.yaml. Changes made here will be overwritten.
+    desc: Automatically generated from the 'build-paper' stage in calkit.yaml.
+      Changes made here will be overwritten.
