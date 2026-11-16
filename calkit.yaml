@@ -22,11 +22,9 @@ questions:
 
 environments:
   py:
-    path: requirements.txt
-    kind: uv-venv
-    python: "3.13"
-    prefix: .venv
-    description: A Python virtual environment managed with uv
+    kind: uv
+    path: pyproject.toml
+    description: A Python project environment managed with uv.
   tex:
     kind: texlive
     release: 2025

@@ -3,7 +3,8 @@ stages:
     cmd: calkit xenv -n py --no-check -- python scripts/collect-data.py
     deps:
       - scripts/collect-data.py
-      - .calkit/env-locks/py
+      - uv.lock
+      - .python-version
     outs:
       - data/raw/data.csv
     desc: Automatically generated from the 'collect-data' stage in calkit.yaml.
@@ -12,7 +13,8 @@ stages:
     cmd: calkit xenv -n py --no-check -- python scripts/analyze.py
     deps:
       - scripts/analyze.py
-      - .calkit/env-locks/py
+      - uv.lock
+      - .python-version
       - data/raw/data.csv
     outs:
       - figures/x-vs-y.png
