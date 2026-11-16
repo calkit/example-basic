@@ -45,33 +45,43 @@ stages:
   build-paper:
     cmd: calkit latex build -e tex --no-check paper/main.tex
     deps:
-    - path: .calkit/env-locks/tex
+    - path: .calkit/env-locks/tex.json
       hash: md5
-      md5: ce6f4ee12b26e1a6788946561bb7ef14.dir
-      size: 2136
-      nfiles: 2
-    - path: paper/figures
+      md5: 9086dda0a0dff018b62f3aadcb4e8b74
+      size: 21798
+    - path: figures/x-vs-y.png
       hash: md5
-      md5: 8e540e706ecbfbcda40107acea9facfd.dir
-      size: 63111
-      nfiles: 2
+      md5: 79efaca5478ffc7c19b0db3a0ae5fcb5
+      size: 63099
+    - path: paper/_calkit/values.tex
+      hash: md5
+      md5: b9b3684dfef0ba5c1a06715f6cf9b747
+      size: 238
+    - path: paper/calkit.sty
+      hash: md5
+      md5: 0869a4a8c673563d0688afd07ce502ea
+      size: 11239
     - path: paper/main.tex
       hash: md5
-      md5: 71f085c6173d528fc1a037d4cea99da9
-      size: 1447
+      md5: 5e4eed0b4c87665a7f4b24823f33ca9f
+      size: 1876
     - path: paper/references.bib
       hash: md5
       md5: e4e59ffb0ca33102d27de953875ec32e
       size: 200
-    - path: paper/results.tex
+    - path: results/summary.json
       hash: md5
-      md5: 5e9c0516142b78357c001a65d19039a1
-      size: 475
+      md5: 746d889b64086f0edde9f0bb3b799338
+      size: 63
+    - path: tables/fits.tex
+      hash: md5
+      md5: ad3d5d3af586764dfdd06df1162eb8d9
+      size: 208
     outs:
     - path: paper/main.pdf
       hash: md5
-      md5: e2ea967fb6039eacef868ed1c3178d53
-      size: 128835
+      md5: f69b3a9b0251ce3fc6458303f06de150
+      size: 139658
   _check_env_py:
     cmd: calkit check conda-env --file environment.yml --output 
       .calkit/env-locks/py.yml
@@ -155,8 +165,8 @@ stages:
       size: 7312
     - path: scripts/analyze.py
       hash: md5
-      md5: dc43cbe2ee422b62a67d7e6ddc80d55c
-      size: 2006
+      md5: b1adf206ac55aa5a6c0bbcd90344a19e
+      size: 2713
     outs:
     - path: figures/x-vs-y.png
       hash: md5
@@ -166,3 +176,7 @@ stages:
       hash: md5
       md5: 746d889b64086f0edde9f0bb3b799338
       size: 63
+    - path: tables/fits.tex
+      hash: md5
+      md5: ad3d5d3af586764dfdd06df1162eb8d9
+      size: 208

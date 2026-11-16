@@ -19,37 +19,22 @@ stages:
       - results/summary.json:
           cache: false
           persist: false
-    desc: Automatically generated from the 'analyze' stage in calkit.yaml.
-      Changes made here will be overwritten.
-  figs-to-paper:
-    cmd: calkit map-paths --dir-to-dir-replace "figures->paper/figures"
-    deps:
-      - figures
-    outs:
-      - paper/figures:
-          cache: false
-          persist: true
-    desc: Automatically generated from the 'figs-to-paper' stage in calkit.yaml.
-      Changes made here will be overwritten.
-  results-to-tex:
-    cmd: calkit latex from-json 'results/summary.json' --output
-      'paper/results.tex'
-    deps:
-      - results/summary.json
-    outs:
-      - paper/results.tex:
+      - tables/fits.tex:
           cache: false
           persist: false
-    desc: Automatically generated from the 'results-to-tex' stage in
-      calkit.yaml. Changes made here will be overwritten.
+    desc: Automatically generated from the 'analyze' stage in calkit.yaml.
+      Changes made here will be overwritten.
   build-paper:
     cmd: calkit latex build -e tex --no-check paper/main.tex
     deps:
       - paper/main.tex
+      - .calkit/env-locks/tex.json
+      - results/summary.json
+      - figures/x-vs-y.png
+      - tables/fits.tex
+      - paper/calkit.sty
       - paper/references.bib
-      - .calkit/env-locks/tex
-      - paper/figures
-      - paper/results.tex
+      - paper/_calkit/values.tex
     outs:
       - paper/main.pdf
     desc: Automatically generated from the 'build-paper' stage in calkit.yaml.

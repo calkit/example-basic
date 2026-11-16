@@ -2,9 +2,13 @@
 
 This is a basic Calkit example project,
 which includes data collection,
-figure generation,
+figure and table generation,
 and LaTeX article compilation,
 all part of a single reproducible pipeline.
+The article pulls its figure, table, and numbers straight from the
+pipeline's outputs with the `calkit` LaTeX package,
+and builds in a TeX Live environment Calkit installs,
+so Docker isn't needed.
 
 You can also view this project on
 [calkit.io](https://calkit.io/calkit/example-basic).

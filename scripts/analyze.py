@@ -56,6 +56,25 @@ if __name__ == "__main__":
     os.makedirs("figures", exist_ok=True)
     fig.savefig("figures/x-vs-y.png", dpi=150)
 
+    # Tabulate the coefficients of each fit, highest power first
+    rows = [
+        ("Linear", ["---", *linear_coeffs], r2_linear),
+        ("Quadratic", list(quadratic_coeffs), r2_quadratic),
+    ]
+    lines = [
+        r"\begin{tabular}{lrrrr}",
+        r"\toprule",
+        r"Fit & $a_2$ & $a_1$ & $a_0$ & $R^2$ \\",
+        r"\midrule",
+    ]
+    for name, coeffs, r2 in rows:
+        cells = [c if isinstance(c, str) else f"${c:.3f}$" for c in coeffs]
+        lines.append(" & ".join([name, *cells, f"${r2:.3f}$"]) + r" \\")
+    lines += [r"\bottomrule", r"\end{tabular}"]
+    os.makedirs("tables", exist_ok=True)
+    with open("tables/fits.tex", "w") as f:
+        f.write("\n".join(lines) + "\n")
+
     os.makedirs("results", exist_ok=True)
     with open("results/summary.json", "w") as f:
         json.dump(

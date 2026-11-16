@@ -2,9 +2,9 @@
 
 \usepackage{sectsty}
 \usepackage{graphicx}
-
-% Results generated from results/summary.json by the pipeline
-\input{results.tex}
+\usepackage{booktabs}
+% Figures, tables, and values from the pipeline, by their path in the project
+\usepackage{calkit}
 
 % Margins
 \topmargin=-0.45in
@@ -35,23 +35,35 @@ we can see the measured relationship between $x$ and $y$,
 along with linear and quadratic fits
 obtained via ordinary least squares~\cite{draper1998applied}.
 The quadratic fit has a much higher $R^2$
-(\results[r_squared_quadratic])
+(\ckvalue[.3f]{results/summary.json}{r_squared_quadratic})
 than the linear fit
-(\results[r_squared_linear]),
+(\ckvalue[.3f]{results/summary.json}{r_squared_linear}),
 indicating that $y$ increases quadratically with $x$.
+Table~\ref{tab:fits} lists the coefficients of both fits.
 
 \begin{figure}[h]
   \centering
-  \includegraphics{figures/x-vs-y.png}
+  \ckfigure[width=0.7\textwidth]{figures/x-vs-y.png}
   \caption{
     Measured $x$ vs $y$ data with linear and quadratic fits.
-    The quadratic fit ($R^2 = \results[r_squared_quadratic]$)
+    The quadratic fit
+    ($R^2 = \ckvalue[.3f]{results/summary.json}{r_squared_quadratic}$)
     captures the data much better than the linear fit
-    ($R^2 = \results[r_squared_linear]$),
+    ($R^2 = \ckvalue[.3f]{results/summary.json}{r_squared_linear}$),
     showing that $y$ increases quadratically with $x$.
   }
   \label{fig:x-vs-y}
 \end{figure}
+
+\begin{table}[h]
+  \centering
+  \caption{
+    Coefficients of the fits $y = a_2 x^2 + a_1 x + a_0$
+    and their coefficients of determination.
+  }
+  \label{tab:fits}
+  \cktable{tables/fits.tex}
+\end{table}
 
 
 \pagebreak
