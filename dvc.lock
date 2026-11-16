@@ -3,15 +3,18 @@ stages:
   collect-data:
     cmd: calkit xenv -n py --no-check -- python scripts/collect-data.py
     deps:
-    - path: .calkit/env-locks/py
+    - path: .python-version
       hash: md5
-      md5: b195e8d274f75b5f4ba8642c2ce9f2ca.dir
-      size: 693
-      nfiles: 3
+      md5: 789ee353b44223a8ed8031aa190631dd
+      size: 5
     - path: scripts/collect-data.py
       hash: md5
       md5: f6eac9dcecbc83717c6487ad67fa2e48
       size: 456
+    - path: uv.lock
+      hash: md5
+      md5: c9a1a25754b528cf25a1a205218e5e3c
+      size: 126421
     outs:
     - path: data/raw/data.csv
       hash: md5
@@ -51,8 +54,8 @@ stages:
       size: 21798
     - path: figures/x-vs-y.png
       hash: md5
-      md5: 79efaca5478ffc7c19b0db3a0ae5fcb5
-      size: 63099
+      md5: e42d42757fed47e14dbeb912582a2a60
+      size: 64060
     - path: paper/_calkit/values.tex
       hash: md5
       md5: b9b3684dfef0ba5c1a06715f6cf9b747
@@ -80,8 +83,8 @@ stages:
     outs:
     - path: paper/main.pdf
       hash: md5
-      md5: f69b3a9b0251ce3fc6458303f06de150
-      size: 139658
+      md5: e47a3306d0888fda855ba88c6074221a
+      size: 140785
   _check_env_py:
     cmd: calkit check conda-env --file environment.yml --output 
       .calkit/env-locks/py.yml
@@ -154,11 +157,10 @@ stages:
   analyze:
     cmd: calkit xenv -n py --no-check -- python scripts/analyze.py
     deps:
-    - path: .calkit/env-locks/py
+    - path: .python-version
       hash: md5
-      md5: b195e8d274f75b5f4ba8642c2ce9f2ca.dir
-      size: 693
-      nfiles: 3
+      md5: 789ee353b44223a8ed8031aa190631dd
+      size: 5
     - path: data/raw/data.csv
       hash: md5
       md5: 1599435208b7a99614b71c29fa93b519
@@ -167,11 +169,15 @@ stages:
       hash: md5
       md5: b1adf206ac55aa5a6c0bbcd90344a19e
       size: 2713
+    - path: uv.lock
+      hash: md5
+      md5: c9a1a25754b528cf25a1a205218e5e3c
+      size: 126421
     outs:
     - path: figures/x-vs-y.png
       hash: md5
-      md5: 79efaca5478ffc7c19b0db3a0ae5fcb5
-      size: 63099
+      md5: e42d42757fed47e14dbeb912582a2a60
+      size: 64060
     - path: results/summary.json
       hash: md5
       md5: 746d889b64086f0edde9f0bb3b799338
