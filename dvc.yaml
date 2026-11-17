@@ -37,8 +37,8 @@ stages:
       - results/summary.json
       - figures/x-vs-y.png
       - tables/fits.tex
-      - paper/calkit.sty
       - paper/references.bib
+      - paper/calkit.sty
       - paper/_calkit/values.tex
     outs:
       - paper/main.pdf
