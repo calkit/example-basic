@@ -164,5 +164,3 @@ cython_debug/
 *.DS_Store
 *.synctex.gz
 .calkit/overleaf/
-
-paper/calkit.sty
