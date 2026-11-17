@@ -79,8 +79,8 @@ if __name__ == "__main__":
     with open("results/summary.json", "w") as f:
         json.dump(
             {
-                "r_squared_linear": round(r2_linear, 3),
-                "r_squared_quadratic": round(r2_quadratic, 3),
+                "r_squared_linear": r2_linear,
+                "r_squared_quadratic": r2_quadratic,
             },
             f,
             indent=2,
