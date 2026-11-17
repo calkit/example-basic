@@ -58,8 +58,8 @@ stages:
       size: 64060
     - path: paper/_calkit/values.tex
       hash: md5
-      md5: b9b3684dfef0ba5c1a06715f6cf9b747
-      size: 238
+      md5: 06c29a3674f2e0da209afad2b3a7d49d
+      size: 264
     - path: paper/calkit.sty
       hash: md5
       md5: 0869a4a8c673563d0688afd07ce502ea
@@ -74,8 +74,8 @@ stages:
       size: 200
     - path: results/summary.json
       hash: md5
-      md5: 746d889b64086f0edde9f0bb3b799338
-      size: 63
+      md5: be1737075277a1ad1be9a8308d0fa62b
+      size: 89
     - path: tables/fits.tex
       hash: md5
       md5: ad3d5d3af586764dfdd06df1162eb8d9
@@ -167,8 +167,8 @@ stages:
       size: 7312
     - path: scripts/analyze.py
       hash: md5
-      md5: b1adf206ac55aa5a6c0bbcd90344a19e
-      size: 2713
+      md5: b04c6ec3a5fd647af5107f7674a724de
+      size: 2693
     - path: uv.lock
       hash: md5
       md5: c9a1a25754b528cf25a1a205218e5e3c
@@ -180,8 +180,8 @@ stages:
       size: 64060
     - path: results/summary.json
       hash: md5
-      md5: 746d889b64086f0edde9f0bb3b799338
-      size: 63
+      md5: be1737075277a1ad1be9a8308d0fa62b
+      size: 89
     - path: tables/fits.tex
       hash: md5
       md5: ad3d5d3af586764dfdd06df1162eb8d9
