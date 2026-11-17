@@ -5,6 +5,7 @@ stages:
       - scripts/collect-data.py
       - uv.lock
       - .python-version
+      - .calkit/env-locks/tex.json
     outs:
       - data/raw/data.csv
     desc: Automatically generated from the 'collect-data' stage in calkit.yaml.
@@ -13,8 +14,10 @@ stages:
     cmd: calkit xenv -n py --no-check -- python scripts/analyze.py
     deps:
       - scripts/analyze.py
+      - matplotlibrc
       - uv.lock
       - .python-version
+      - .calkit/env-locks/tex.json
       - data/raw/data.csv
     outs:
       - figures/x-vs-y.png

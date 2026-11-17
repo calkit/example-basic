@@ -2,9 +2,14 @@
   "added": [
     "amsmath",
     "booktabs",
+    "cm-super",
+    "dvipng",
+    "geometry",
     "sectsty",
     "siunitx",
-    "tools"
+    "tools",
+    "type1cm",
+    "underscore"
   ],
   "lock_format": 1,
   "packages": {
@@ -58,10 +63,40 @@
       "sha512": "e65b2096ca183ca21d8ff987489223bc98750fcbaf4f9f9a9996f5153a76c5587d1ad77693234d02f80753b8b8cb86fd957514f82065bd7aab9eb64bad9003a3",
       "size": 238064
     },
+    "cm-super": {
+      "revision": 15878,
+      "sha512": "45638ebf4ef2ffb7c4b74669ea089a9f8d3ab4b98e555b3f9b2e9bd9732b48fdba61dc91188e2c8962b8bfa3caaab31c10d1ccd3e0aa9e26197b148e59576f8f",
+      "size": 64562404
+    },
     "dehyph": {
       "revision": 48599,
       "sha512": "2dc4ee5b4389549c032f3a4d87740ab3c5e296a1ef109a6b673656a82ca4c317ca774f39f61417568b8ccbeac787c4058184fc893d53799bbf0b042ba5aca9a2",
       "size": 46556
+    },
+    "dvipng": {
+      "revision": 73848,
+      "sha512": "c9f2a66bc6da4cbdb78bd231449fe6ba8c0263903f3fef04d6cd7acbb1fbd226031644864aac7213d141033678b72763ecfae8a37325415d36698128a128b5d5",
+      "size": 932
+    },
+    "dvipng.aarch64-linux": {
+      "revision": 73915,
+      "sha512": "2980d12daf42e14c547db742d5e8d65782426310ad4ee3b3443cbc825ecd422cfa0c9e815c908150dd18d5e0957d08f8e14563b1f0bb32c6de80360af935a411",
+      "size": 464788
+    },
+    "dvipng.universal-darwin": {
+      "revision": 73806,
+      "sha512": "0b1b7dc033d015e31960b2417488931544894f7cb37e0336d5e1058f3788a3919304855af0c6a3e13322bf07efe8b8ffc739a8666f3f2cdcd2c58e7f05649758",
+      "size": 914004
+    },
+    "dvipng.windows": {
+      "revision": 73796,
+      "sha512": "2102ac62928fd85057df2048be7bc29c15c0c05f219edd0af0496da3d3f72ba90230ed403a9346c1aebebe5e8dcfc517d4a8d326879a96cf9d3f43c480662aee",
+      "size": 450160
+    },
+    "dvipng.x86_64-linux": {
+      "revision": 74121,
+      "sha512": "f18d29c56e3172f5f696e9be18bcc92e89dea7d22df7c238a7c03392639065cdaf9deb4d22795b5b4b06c653da0f23caf10d6b3fef962442dc72886841484c94",
+      "size": 497104
     },
     "epstopdf": {
       "revision": 71782,
@@ -102,6 +137,11 @@
       "revision": 76740,
       "sha512": "a9c52037430294b047a5d069a8e15f7c1864dc1d9b0d420f0ac3716f0deefa76bb68141d601d9397a788eb16f0055a489da7f2fed5405c493e0210f997bfc2a9",
       "size": 5184
+    },
+    "geometry": {
+      "revision": 77677,
+      "sha512": "83ab6691fa711f70c8dfb57a3042e555e3658ee95014a5e2ef7e5be130ce544817b89194d623e2b258d1d24942591e7d3f06e751698ba5ca62b3f2542f888d36",
+      "size": 8720
     },
     "graphics": {
       "revision": 75374,
@@ -477,6 +517,16 @@
       "revision": 76708,
       "sha512": "83d87be518e6634c4b62bc5683c2c3618999c92b234f66c74ef836552348a186dc8dd8969885b8562bfc579bf2b871f0e2474c3848981a743fe2a247dd2cee42",
       "size": 47548
+    },
+    "type1cm": {
+      "revision": 78116,
+      "sha512": "cd1b6c6b2d246fbb14dc067c9480b04dbe6ad2d8fdfe3d783873a4013f43cbfc42cd88894136a9d3c847faece0a44c9bdb17c99b865a50f0e173f36f15943150",
+      "size": 2052
+    },
+    "underscore": {
+      "revision": 77677,
+      "sha512": "e2eff2ce90dd3f76f1bb1b480da5f6e057f311821f6d473e937332e6a47cd8ef7e76bae1ca33662976897938d1baae8c3c0c0b78846f9a7b25cc6bdffa01df58",
+      "size": 4704
     },
     "unicode-data": {
       "revision": 76413,

@@ -3,6 +3,10 @@ stages:
   collect-data:
     cmd: calkit xenv -n py --no-check -- python scripts/collect-data.py
     deps:
+    - path: .calkit/env-locks/tex.json
+      hash: md5
+      md5: 93395bf4f3577c2034f6afb0a6c97337
+      size: 23884
     - path: .python-version
       hash: md5
       md5: 789ee353b44223a8ed8031aa190631dd
@@ -50,12 +54,12 @@ stages:
     deps:
     - path: .calkit/env-locks/tex.json
       hash: md5
-      md5: 9086dda0a0dff018b62f3aadcb4e8b74
-      size: 21798
+      md5: 93395bf4f3577c2034f6afb0a6c97337
+      size: 23884
     - path: figures/x-vs-y.png
       hash: md5
-      md5: e42d42757fed47e14dbeb912582a2a60
-      size: 64060
+      md5: 5ebc27b5d5fd0b94915482bdfa028f98
+      size: 62631
     - path: paper/_calkit/values.tex
       hash: md5
       md5: 06c29a3674f2e0da209afad2b3a7d49d
@@ -83,8 +87,8 @@ stages:
     outs:
     - path: paper/main.pdf
       hash: md5
-      md5: e47a3306d0888fda855ba88c6074221a
-      size: 140785
+      md5: 1e1825bbd6a4d4df27921e73a1e325dc
+      size: 140385
   _check_env_py:
     cmd: calkit check conda-env --file environment.yml --output 
       .calkit/env-locks/py.yml
@@ -157,6 +161,10 @@ stages:
   analyze:
     cmd: calkit xenv -n py --no-check -- python scripts/analyze.py
     deps:
+    - path: .calkit/env-locks/tex.json
+      hash: md5
+      md5: 93395bf4f3577c2034f6afb0a6c97337
+      size: 23884
     - path: .python-version
       hash: md5
       md5: 789ee353b44223a8ed8031aa190631dd
@@ -165,6 +173,10 @@ stages:
       hash: md5
       md5: 1599435208b7a99614b71c29fa93b519
       size: 7312
+    - path: matplotlibrc
+      hash: md5
+      md5: a3172386a631fddf6fb59bf3fe52cde9
+      size: 101
     - path: scripts/analyze.py
       hash: md5
       md5: b04c6ec3a5fd647af5107f7674a724de
@@ -176,8 +188,8 @@ stages:
     outs:
     - path: figures/x-vs-y.png
       hash: md5
-      md5: e42d42757fed47e14dbeb912582a2a60
-      size: 64060
+      md5: 5ebc27b5d5fd0b94915482bdfa028f98
+      size: 62631
     - path: results/summary.json
       hash: md5
       md5: be1737075277a1ad1be9a8308d0fa62b

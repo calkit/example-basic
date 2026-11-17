@@ -25,10 +25,11 @@ environments:
     kind: uv
     path: pyproject.toml
     description: A Python project environment managed with uv.
+    with: [tex]
   tex:
     kind: texlive
     release: 2025
-    description: TeX Live, installed by Calkit without Docker.
+    description: TeX Live, managed by Calkit.
 
 pipeline:
   stages:
@@ -44,6 +45,7 @@ pipeline:
       environment: py
       inputs:
         - from_stage_outputs: collect-data
+        - matplotlibrc
       outputs:
         - figures/x-vs-y.png
         - path: results/summary.json
