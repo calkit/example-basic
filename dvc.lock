@@ -3,15 +3,22 @@ stages:
   collect-data:
     cmd: calkit xenv -n py --no-check -- python scripts/collect-data.py
     deps:
-    - path: .calkit/env-locks/py
+    - path: .calkit/env-locks/tex.json
       hash: md5
-      md5: b195e8d274f75b5f4ba8642c2ce9f2ca.dir
-      size: 693
-      nfiles: 3
+      md5: 93395bf4f3577c2034f6afb0a6c97337
+      size: 23884
+    - path: .python-version
+      hash: md5
+      md5: 789ee353b44223a8ed8031aa190631dd
+      size: 5
     - path: scripts/collect-data.py
       hash: md5
       md5: f6eac9dcecbc83717c6487ad67fa2e48
       size: 456
+    - path: uv.lock
+      hash: md5
+      md5: c9a1a25754b528cf25a1a205218e5e3c
+      size: 126421
     outs:
     - path: data/raw/data.csv
       hash: md5
@@ -45,33 +52,43 @@ stages:
   build-paper:
     cmd: calkit latex build -e tex --no-check paper/main.tex
     deps:
-    - path: .calkit/env-locks/tex
+    - path: .calkit/env-locks/tex.json
       hash: md5
-      md5: ce6f4ee12b26e1a6788946561bb7ef14.dir
-      size: 2136
-      nfiles: 2
-    - path: paper/figures
+      md5: 93395bf4f3577c2034f6afb0a6c97337
+      size: 23884
+    - path: figures/x-vs-y.png
       hash: md5
-      md5: 8e540e706ecbfbcda40107acea9facfd.dir
-      size: 63111
-      nfiles: 2
+      md5: 5ebc27b5d5fd0b94915482bdfa028f98
+      size: 62631
+    - path: paper/_calkit/values.tex
+      hash: md5
+      md5: 06c29a3674f2e0da209afad2b3a7d49d
+      size: 264
+    - path: paper/calkit.sty
+      hash: md5
+      md5: 0869a4a8c673563d0688afd07ce502ea
+      size: 11239
     - path: paper/main.tex
       hash: md5
-      md5: 71f085c6173d528fc1a037d4cea99da9
-      size: 1447
+      md5: 5e4eed0b4c87665a7f4b24823f33ca9f
+      size: 1876
     - path: paper/references.bib
       hash: md5
       md5: e4e59ffb0ca33102d27de953875ec32e
       size: 200
-    - path: paper/results.tex
+    - path: results/summary.json
       hash: md5
-      md5: 5e9c0516142b78357c001a65d19039a1
-      size: 475
+      md5: be1737075277a1ad1be9a8308d0fa62b
+      size: 89
+    - path: tables/fits.tex
+      hash: md5
+      md5: ad3d5d3af586764dfdd06df1162eb8d9
+      size: 208
     outs:
     - path: paper/main.pdf
       hash: md5
-      md5: e2ea967fb6039eacef868ed1c3178d53
-      size: 128835
+      md5: 1e1825bbd6a4d4df27921e73a1e325dc
+      size: 140385
   _check_env_py:
     cmd: calkit check conda-env --file environment.yml --output 
       .calkit/env-locks/py.yml
@@ -144,25 +161,40 @@ stages:
   analyze:
     cmd: calkit xenv -n py --no-check -- python scripts/analyze.py
     deps:
-    - path: .calkit/env-locks/py
+    - path: .calkit/env-locks/tex.json
       hash: md5
-      md5: b195e8d274f75b5f4ba8642c2ce9f2ca.dir
-      size: 693
-      nfiles: 3
+      md5: 93395bf4f3577c2034f6afb0a6c97337
+      size: 23884
+    - path: .python-version
+      hash: md5
+      md5: 789ee353b44223a8ed8031aa190631dd
+      size: 5
     - path: data/raw/data.csv
       hash: md5
       md5: 1599435208b7a99614b71c29fa93b519
       size: 7312
+    - path: matplotlibrc
+      hash: md5
+      md5: a3172386a631fddf6fb59bf3fe52cde9
+      size: 101
     - path: scripts/analyze.py
       hash: md5
-      md5: dc43cbe2ee422b62a67d7e6ddc80d55c
-      size: 2006
+      md5: b04c6ec3a5fd647af5107f7674a724de
+      size: 2693
+    - path: uv.lock
+      hash: md5
+      md5: c9a1a25754b528cf25a1a205218e5e3c
+      size: 126421
     outs:
     - path: figures/x-vs-y.png
       hash: md5
-      md5: 79efaca5478ffc7c19b0db3a0ae5fcb5
-      size: 63099
+      md5: 5ebc27b5d5fd0b94915482bdfa028f98
+      size: 62631
     - path: results/summary.json
       hash: md5
-      md5: 746d889b64086f0edde9f0bb3b799338
-      size: 63
+      md5: be1737075277a1ad1be9a8308d0fa62b
+      size: 89
+    - path: tables/fits.tex
+      hash: md5
+      md5: ad3d5d3af586764dfdd06df1162eb8d9
+      size: 208

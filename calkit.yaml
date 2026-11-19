@@ -5,7 +5,6 @@ description: A basic Calkit example project.
 git_repo_url: https://github.com/calkit/example-basic
 
 requirements:
-  - docker
   - uv
 
 questions:
@@ -23,15 +22,14 @@ questions:
 
 environments:
   py:
-    path: requirements.txt
-    kind: uv-venv
-    python: "3.13"
-    prefix: .venv
-    description: A Python virtual environment managed with uv
+    kind: uv
+    path: pyproject.toml
+    description: A Python project environment managed with uv.
+    with: [tex]
   tex:
-    kind: docker
-    image: ghcr.io/calkit/latex:0.1.1
-    description: TeX Live via Docker.
+    kind: texlive
+    release: 2025
+    description: TeX Live, managed by Calkit.
 
 pipeline:
   stages:
@@ -47,30 +45,17 @@ pipeline:
       environment: py
       inputs:
         - from_stage_outputs: collect-data
+        - matplotlibrc
       outputs:
         - figures/x-vs-y.png
         - path: results/summary.json
           storage: git
-    figs-to-paper:
-      kind: map-paths
-      paths:
-        - kind: dir-to-dir-replace
-          src: figures
-          dest: paper/figures
-    results-to-tex:
-      kind: json-to-latex
-      inputs:
-        - results/summary.json
-      outputs:
-        - paper/results.tex
+        - path: tables/fits.tex
+          storage: git
     build-paper:
       kind: latex
       target_path: paper/main.tex
       environment: tex
-      inputs:
-        - from_stage_outputs: figs-to-paper
-        - from_stage_outputs: results-to-tex
-        - paper/references.bib
 
 datasets:
   - path: data/raw/data.csv

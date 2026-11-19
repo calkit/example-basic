@@ -1,0 +1,3 @@
+# Render the figures' text with LaTeX, from the tex environment
+text.usetex: true
+font.family: serif

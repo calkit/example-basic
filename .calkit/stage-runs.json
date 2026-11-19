@@ -1,0 +1,59 @@
+{
+  "analyze": {
+    "start_time": "2026-11-17T17:00:48.032000",
+    "end_time": "2026-11-17T17:01:14.314000",
+    "environment": "py",
+    "git_rev": "12bf430bd6c03cee9d25bb456aa3dd0db5f0239f",
+    "git_dirty": true,
+    "dvc_lock_hash": "sha256:d76981f78569d836c7b316ad542eaf44440e63216df882d1bbeb99770af5cdac",
+    "calkit_version": "0.52.1.dev22+g022a0087f",
+    "calkit_git_rev": "022a0087f5854fae4fe2bf9699fc4e67b304bfde",
+    "system": {
+      "machine_id": "33C4DDA7-7423-5B6A-B86F-EA6859EB058E",
+      "os": "Darwin",
+      "os_version": "27.2.0",
+      "machine": "arm64",
+      "processor": "arm",
+      "cpu_count": 10,
+      "memory_gb": 64.0
+    }
+  },
+  "build-paper": {
+    "start_time": "2026-11-17T17:01:14.314000",
+    "end_time": "2026-11-17T17:01:16.806000",
+    "environment": "tex",
+    "git_rev": "12bf430bd6c03cee9d25bb456aa3dd0db5f0239f",
+    "git_dirty": true,
+    "dvc_lock_hash": "sha256:d91dbf265655c47df327812ff1e433a6ee5c59481b3d01a65f013c0e21997a4d",
+    "calkit_version": "0.52.1.dev22+g022a0087f",
+    "calkit_git_rev": "022a0087f5854fae4fe2bf9699fc4e67b304bfde",
+    "system": {
+      "machine_id": "33C4DDA7-7423-5B6A-B86F-EA6859EB058E",
+      "os": "Darwin",
+      "os_version": "27.2.0",
+      "machine": "arm64",
+      "processor": "arm",
+      "cpu_count": 10,
+      "memory_gb": 64.0
+    }
+  },
+  "collect-data": {
+    "start_time": "2026-11-17T17:00:43.295000",
+    "end_time": "2026-11-17T17:00:48.032000",
+    "environment": "py",
+    "git_rev": "12bf430bd6c03cee9d25bb456aa3dd0db5f0239f",
+    "git_dirty": true,
+    "dvc_lock_hash": "sha256:72f7f8db3d6eaa0bde62de7bd263ad5f4612665e37143d2844336fb252173087",
+    "calkit_version": "0.52.1.dev22+g022a0087f",
+    "calkit_git_rev": "022a0087f5854fae4fe2bf9699fc4e67b304bfde",
+    "system": {
+      "machine_id": "33C4DDA7-7423-5B6A-B86F-EA6859EB058E",
+      "os": "Darwin",
+      "os_version": "27.2.0",
+      "machine": "arm64",
+      "processor": "arm",
+      "cpu_count": 10,
+      "memory_gb": 64.0
+    }
+  }
+}
