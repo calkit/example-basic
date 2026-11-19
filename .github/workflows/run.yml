@@ -36,7 +36,7 @@ jobs:
       - uses: astral-sh/setup-uv@v5
       - name: Install Calkit from its main branch
         run: |
-          uv tool install "calkit-python @ git+https://github.com/calkit/calkit@369c107fd60438ac85fadcc60058f4c94824f01c"
+          uv tool install "calkit-python @ git+https://github.com/calkit/calkit@729a9f58b5f5af047a77c0e23f13ea2969f3cf90"
           echo "$HOME/.local/bin" >> "$GITHUB_PATH"
       - name: Run Calkit
         uses: calkit/calkit/actions/run@main
